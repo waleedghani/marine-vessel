@@ -47,7 +47,7 @@ const Home = ({ data }) => {
 		cssEase: "linear",
 		autoplay: true,
 		autoplaySpeed: 1000,
-		arrows: true,
+		arrows: false,
 		responsive: [
 			{
 				breakpoint: 992,
@@ -81,7 +81,7 @@ const Home = ({ data }) => {
 
 	const sliderverticalplay = {
 		dots: false,
-		arrow: false,
+		arrows: false,
 		infinite: true,
 		speed: 500,
 		slidesToShow: 4,
@@ -101,7 +101,7 @@ const Home = ({ data }) => {
 
 	const sliderverticaltestemonial = {
 		dots: true,
-		arrow: false,
+		arrows: false,
 		infinite: true,
 		speed: 500,
 		slidesToShow: 2,
@@ -159,14 +159,14 @@ const Home = ({ data }) => {
 									do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 								</p>
 								<div className="pay-btn d-flex align-items-center gap-2">
-									<Link to="/">
+									<Link To="/">
 										<img
 											src={googleplay}
 											className="img-fluid"
 											alt="Google Play"
 										/>
 									</Link>
-									<Link to="/">
+									<Link To="/">
 										<img src={appstore} className="img-fluid" alt="App Store" />
 									</Link>
 								</div>
@@ -223,13 +223,13 @@ const Home = ({ data }) => {
 					</Row>
 				</Container>
 			</section>
-			<section class="form-secs-sec">
+			<section className="form-secs-sec">
 				<Container>
 					<Row>
 						<Col lg={5}>
 							<div className="img-wrapper position-relative">
 								<img src={homeimg5} className="img-fluid" alt="" />
-								<div class="position-wrapper">
+								<div className="position-wrapper">
 									<img src={homeimg4} className="img-fluid" alt="" />
 								</div>
 							</div>
@@ -262,6 +262,12 @@ const Home = ({ data }) => {
 				<Container>
 					<Row>
 						<Col lg={6}>
+							<div className="marina-slider-content  text-start">
+								<h5>Welcome to Marina Eye</h5>
+								<h2 className="mb-3 mt-3">
+									Download Our Application & Get The Most Out of It
+								</h2>
+							</div>
 							<div className="slider-vertical-play sliderverticalplay">
 								<Slider {...sliderverticalplay}>
 									<div>
@@ -344,9 +350,9 @@ const Home = ({ data }) => {
 				<Container>
 					<Row>
 						<Col lg={7} className="mx-auto">
-							<div class="marina-slider-content mt-5 text-center">
+							<div className="marina-slider-content mt-5 text-center">
 								<h5>Why use our application</h5>
-								<h2 class="mb-3 mt-3">
+								<h2 className="mb-3 mt-3">
 									Discover the Benefits of Marina Eye for Seamless Docking
 								</h2>
 							</div>
@@ -357,7 +363,7 @@ const Home = ({ data }) => {
 							<Row>
 								<Col lg={3}>
 									<div className="content-discover">
-										<img src={iconimg3} class="img-fluid" alt="" />
+										<img src={iconimg3} className="img-fluid" alt="" />
 										<h5>Community and Support</h5>
 										<p>
 											Lorem ipsum dolor sit amet, consecte adipiscing elit, sed
@@ -367,7 +373,7 @@ const Home = ({ data }) => {
 								</Col>
 								<Col lg={3}>
 									<div className="content-discover">
-										<img src={iconimg2} class="img-fluid" alt="" />
+										<img src={iconimg2} className="img-fluid" alt="" />
 										<h5>Local Attractions and Amenities</h5>
 										<p>
 											Lorem ipsum dolor sit amet, consecte adipiscing elit, sed
@@ -377,7 +383,7 @@ const Home = ({ data }) => {
 								</Col>
 								<Col lg={3}>
 									<div className="content-discover">
-										<img src={iconimg1} class="img-fluid" alt="" />
+										<img src={iconimg1} className="img-fluid" alt="" />
 										<h5>User-Friendly Interface</h5>
 										<p>
 											Lorem ipsum dolor sit amet, consecte adipiscing elit, sed
@@ -387,7 +393,7 @@ const Home = ({ data }) => {
 								</Col>
 								<Col lg={3}>
 									<div className="content-discover">
-										<img src={iconimg} class="img-fluid" alt="" />
+										<img src={iconimg} className="img-fluid" alt="" />
 										<h5>Comprehensive Marina Information</h5>
 										<p>
 											Lorem ipsum dolor sit amet, consecte adipiscing elit, sed
@@ -404,9 +410,9 @@ const Home = ({ data }) => {
 				<Container>
 					<Row>
 						<Col lg={7} className="mx-auto">
-							<div class="marina-slider-content mt-5 text-center">
+							<div className="marina-slider-content mt-5 text-center">
 								<h5>Frequently asked questionS</h5>
-								<h2 class="mb-3 mt-3">Let us answer your Questions</h2>
+								<h2 className="mb-3 mt-3">Let us answer your Questions</h2>
 								<p>
 									Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
 									do eiusmod tempor incididunt ut labore et dolore magna
@@ -511,7 +517,7 @@ const Home = ({ data }) => {
 						<Col lg={6}>
 							<div className="marina-slider-content  text-start">
 								<h5>Welcome to Marina Eye</h5>
-								<h2 class="mb-3 mt-3">
+								<h2 className="mb-3 mt-3">
 									Have a look at what our client say about Us
 								</h2>
 								<p>

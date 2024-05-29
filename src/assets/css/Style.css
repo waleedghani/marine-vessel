@@ -37,8 +37,8 @@ body {
 	padding: 0;
 	height: 100vh;
 	overflow-y: auto;
+	position: relative;
 }
-
 :root {
 	--bluetype-background-color: #146dfa;
 	--heading-color: #292929;
@@ -182,7 +182,7 @@ section.header {
 }
 .img-right-banner-mobile img {
 	width: 100%;
-	height: 580px;
+	height: 540px;
 	object-fit: scale-down;
 }
 img.img-fluid.img-wrapper.img-wrpa {
@@ -231,13 +231,16 @@ a.anchor-read-me {
 	align-items: center;
 	justify-content: start;
 	gap: 30px;
-	background: #eee6e6;
+	background: #d9d9d9;
 	padding: 12px 30px;
 	border-radius: 10px;
 	margin: 5px;
 }
 /* styles.css */
-
+section.discover-sec {
+	background: #d9d9d9;
+	padding: 51px 0 80px 0;
+}
 .section.application-download-sec {
 	padding: 70px 0;
 }
@@ -264,7 +267,7 @@ a.anchor-read-me {
 	opacity: 1;
 }
 section.application-download-sec {
-	padding: 110px 0;
+	padding: 120px 0;
 }
 .content-discover h5 {
 	color: #000;
@@ -311,7 +314,7 @@ section.faqs {
 	display: block;
 }
 .faq-item {
-	background: #eee6e6;
+	background: #d9d9d9;
 	border-radius: 10px;
 	margin: 16px;
 	padding: 15px;
@@ -357,8 +360,12 @@ section.faqs {
 	margin-bottom: 0;
 	margin-top: 16px;
 }
+section.slider-sec {
+	margin-top: 10px;
+	margin-bottom: 50px;
+}
 .testemonial-content {
-	background: #eee6e6;
+	background: #d9d9d9;
 	padding: 39px;
 	border-radius: 20px;
 }
@@ -448,7 +455,7 @@ section.have-a-look-sec {
 }
 footer {
 	background: #212121;
-	padding: 70px 0;
+	padding: 120px 0;
 }
 .footer-content h3 {
 	color: #fff;
@@ -466,4 +473,21 @@ footer {
 }
 .list-url-footer h5 {
 	margin-bottom: 20px;
+}
+a.btn.gold {
+	background: #ffbb0e !important;
+	width: 122px;
+}
+.list-url-footer input#formBasicEmail {
+	background: transparent;
+	border-radius: 20px;
+	padding: 10px;
+}
+.list-url-footer input#formBasicEmail::placeholder {
+	color: #fff;
+	font-family: "Poppins-Medium";
+	font-size: 14px;
+}
+.list-url-footer {
+	margin-top: 10px;
 }
