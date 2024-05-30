@@ -161,6 +161,7 @@ section.header {
 }
 .btn-wrapper {
 	text-align: end;
+	width: 100%;
 }
 section.banner {
 	background-image: url(../img/banner.png);
@@ -328,7 +329,7 @@ section.faqs {
 	background-position: center;
 	position: absolute;
 	right: 20px;
-	top: 44%;
+	top: 26px;
 	height: 10px;
 	width: 18px;
 }
@@ -457,6 +458,13 @@ footer {
 	background: #212121;
 	padding: 120px 0;
 }
+.form-control:focus {
+	color: #fff;
+	background-color: transparent;
+	border-color: none;
+	outline: 0;
+	box-shadow: none;
+}
 .footer-content h3 {
 	color: #fff;
 	font-size: 35px;
@@ -490,4 +498,187 @@ a.btn.gold {
 }
 .list-url-footer {
 	margin-top: 10px;
+}
+
+div#top-nav {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background: #d9d9d9;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.menu-list.navbar-wrapper ul {
+	flex-direction: column;
+	gap: 20px;
+}
+.hamburger-react {
+	position: relative;
+	z-index: 11111;
+}
+.hidden {
+	display: none !important;
+}
+.navbar-wrapper ul {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.hamburger-react {
+	position: relative;
+	z-index: 11111;
+	display: none;
+}
+@media (min-width: 1200px) and (max-width: 1367px) {
+	.img-right-banner-mobile img {
+		width: 100%;
+		height: 460px;
+		object-fit: scale-down;
+	}
+	.position-wrapper img.img-fluid {
+		width: 100%;
+		height: 400px;
+		object-fit: scale-down;
+	}
+	.img-right-banner-mobile {
+		margin-top: 30px;
+	}
+}
+
+@media (max-width: 912px) {
+	.hidden-wrapper {
+		display: none;
+	}
+
+	.hamburger-react {
+		position: relative;
+		z-index: 11111;
+		display: block !important;
+	}
+	.navbar-wrapper ul li a {
+		padding: 0px 20px;
+		font-family: "Poppins-Medium";
+		font-size: 18px;
+		color: #146dfa;
+	}
+}
+@media (max-width: 576px) {
+	section.header {
+		padding: 10px;
+		position: absolute;
+		width: 100%;
+	}
+	.btn {
+		background: #fff !important;
+		color: #146dfa !important;
+		border-radius: 20px !important;
+		width: 100%;
+		text-align: center !important;
+		padding: 7px 0 !important;
+		font-family: var(--medium-font-family) !important;
+		font-size: 16px !important;
+	}
+	.heading-banner {
+		display: flex;
+		flex-direction: column;
+		align-items: start;
+		justify-content: start;
+		height: 100%;
+		margin-top: 90px;
+	}
+	.heading-banner h1 {
+		font-size: 25px;
+	}
+	.heading-banner p {
+		font-size: 13px;
+	}
+	.img-right-banner-mobile img {
+		width: 100%;
+		height: 230px;
+		object-fit: scale-down;
+	}
+	img.img-fluid.img-wrapper.img-wrpa {
+		margin-top: 60px;
+	}
+	.position-wrapper img.img-fluid {
+		width: 100%;
+		height: 200px;
+		object-fit: scale-down;
+	}
+	section.form-secs-sec .img-wrapper img {
+		width: 80%;
+	}
+	.position-wrapper {
+		position: absolute;
+		top: 10px;
+		right: -20px;
+	}
+	.marina-slider-content h2 {
+		font-size: 22px;
+	}
+	.marina-slider-content p {
+		font-size: 14px;
+	}
+	section.application-download-sec {
+		padding: 40px 0;
+	}
+	.play-content {
+		padding: 12px 10px;
+		gap: 14px;
+	}
+	.play-wrapper {
+		width: 80px;
+	}
+	.now-playing h4 {
+		font-size: 12px;
+	}
+	.faq-item span {
+		font-family: "Poppins-Medium";
+		font-size: 13px;
+		padding-right: 40px;
+	}
+	.answer {
+		margin-top: 10px;
+		color: #000;
+		padding: 10px 30px 0 0;
+		font-size: 11px;
+	}
+	.faq-item:after {
+		content: "";
+		background-image: url(/src/assets/img/arrowfaqs.png);
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
+		background-position: center;
+		position: absolute;
+		right: 20px;
+		top: 20px;
+		height: 10px;
+		width: 18px;
+	}
+	section.have-a-look-sec {
+		padding: 30px 0;
+	}
+	section.faqs {
+		padding: 20px 0;
+	}
+	.testemonial-content {
+		background: #d9d9d9;
+		padding: 21px;
+		border-radius: 20px;
+	}
+	section.have-a-look-sec ul.slick-dots {
+		left: -7px;
+	}
+	footer {
+		padding: 50px 0;
+	}
+	.footer-content h3 {
+		color: #fff;
+		font-size: 21px;
+		font-family: "Poppins-Bold";
+	}
+	.list-url-footer {
+		margin-top: 26px;
+	}
 }
