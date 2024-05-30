@@ -44,13 +44,13 @@ const Header = () => {
 						<Col
 							lg={3}
 							xs={6}
-							className="position-relative d-flex align-items-center gap-3"
+							className="position-relative d-flex align-items-center justify-content-end  gap-3 col-lg-3 col-6"
 						>
-							<div className="btn-wrapper">
+							{/* <div className="btn-wrapper">
 								<Link to="/" className="btn">
 									Sign In
 								</Link>
-							</div>
+							</div> */}
 							<Hamburger toggled={isOpen} toggle={toggleMenu} />
 						</Col>
 					</Row>

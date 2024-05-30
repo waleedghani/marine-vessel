@@ -530,6 +530,9 @@ div#top-nav {
 	z-index: 11111;
 	display: none;
 }
+section.form-secs-sec {
+	padding: 80px 0;
+}
 @media (min-width: 1200px) and (max-width: 1367px) {
 	.img-right-banner-mobile img {
 		width: 100%;

@@ -235,7 +235,7 @@ const Home = ({ data }) => {
 					</Row>
 				</Container>
 			</section>
-			<section className="slider-sec pt-lg-5 pb-lg-5">
+			{/* <section className="slider-sec pt-lg-5 pb-lg-5">
 				<Container>
 					<Row>
 						<Col lg={7} className="mx-auto">
@@ -268,7 +268,7 @@ const Home = ({ data }) => {
 						</Col>
 					</Row>
 				</Container>
-			</section>
+			</section> */}
 			<section className="form-secs-sec">
 				<Container>
 					<Row>
