@@ -3,7 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { logo } from "../images/index";
 import "bootstrap/dist/css/bootstrap.css";
-import "../assets/css/Style.css";
+import "../assets/css/commonStyle.css";
 import Hamburger from "hamburger-react";
 
 const Header = () => {

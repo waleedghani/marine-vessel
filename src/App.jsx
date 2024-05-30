@@ -1,6 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import "./assets/css/Style.css";
+import "./assets/css/commonStyle.css";
 import "./index.scss";
 import Home from "./pages/Home";
 import PublicRoutes from "./Routes/Publicroutes";

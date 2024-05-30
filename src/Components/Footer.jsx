@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Row, Col, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
-import "../assets/css/Style.css";
+import "../assets/css/commonStyle.css";
 import { appstore, googleplay } from "../images";
 const Footer = () => {
 	return (
