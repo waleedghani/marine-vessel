@@ -32,7 +32,7 @@ html {
 }
 body {
 	overflow: hidden;
-	background-color: #f2f2f2 !important;
+	/* background-color: #f2f2f2 !important; */
 	margin: 0;
 	padding: 0;
 	height: 100vh;
@@ -43,6 +43,7 @@ body {
 	--bluetype-background-color: #146dfa;
 	--heading-color: #292929;
 	--heading1-color: #fbfcfd;
+	--yellow-bg: #ffbb0e;
 	--bold-font-family: "Poppins-Bold";
 	--medium-font-family: "Poppins-Medium";
 	--regular-font-family: "Poppins-Regular";
@@ -153,7 +154,7 @@ ul {
 .navbar-wrapper ul li a {
 	padding: 0px 20px;
 	font-family: "Poppins-Medium";
-	font-size: 18px;
+	font-size: 16px;
 	color: #fff;
 }
 section.header {
@@ -170,7 +171,7 @@ section.banner {
 	height: 100vh;
 }
 section.header {
-	padding: 30px;
+	padding: 10px 30px;
 	position: absolute;
 	width: 100%;
 }
@@ -237,9 +238,12 @@ a.anchor-read-me {
 	border-radius: 10px;
 	margin: 5px;
 }
+.bg-yellow {
+	background-color: var(--yellow-bg);
+}
 /* styles.css */
 section.discover-sec {
-	background: #d9d9d9;
+	/* background: #d9d9d9; */
 	padding: 51px 0 80px 0;
 }
 .section.application-download-sec {
@@ -291,7 +295,9 @@ section.application-download-sec {
 }
 .content-discover {
 	text-align: center;
-	padding: 0px 20px;
+	background: #ffc940;
+	padding: 25px 5px;
+	border-radius: 20px;
 }
 section.faqs {
 	padding: 60px 0;
@@ -315,7 +321,7 @@ section.faqs {
 	display: block;
 }
 .faq-item {
-	background: #d9d9d9;
+	background: #c6c6c652;
 	border-radius: 10px;
 	margin: 16px;
 	padding: 15px;
@@ -335,7 +341,7 @@ section.faqs {
 }
 .faq-item span {
 	font-family: "Poppins-Medium";
-	font-size: 20px;
+	font-size: 18px;
 }
 .answer {
 	margin-top: 10px;
@@ -444,7 +450,8 @@ section.have-a-look-sec {
 	position: relative;
 }
 section.have-a-look-sec {
-	padding: 100px 0;
+	padding: 40px 0 100px;
+	background-image: url(/src/assets/img/bg-shadow.png);
 }
 .header {
 	background-color: transparent; /* Set initial background color */
@@ -455,8 +462,11 @@ section.have-a-look-sec {
 	background-color: white; /* Change background color on scroll */
 }
 footer {
-	background: #212121;
+	/* background: #212121; */
 	padding: 120px 0;
+	background-image: url(../img/footer-bg.png);
+	background-size: cover;
+	background-repeat: no-repeat;
 }
 .form-control:focus {
 	color: #fff;
@@ -467,8 +477,10 @@ footer {
 }
 .footer-content h3 {
 	color: #fff;
-	font-size: 35px;
-	font-family: "Poppins-Bold";
+	font-size: 30px;
+	font-family: "Poppins-Regular";
+	/* padding-right: 70px; */
+	line-height: 40px;
 }
 .list-url-footer ul li {
 	display: flex;
@@ -478,6 +490,7 @@ footer {
 	color: #fff;
 	font-family: "Poppins-Medium";
 	font-size: 16px;
+	margin-bottom: 7px;
 }
 .list-url-footer h5 {
 	margin-bottom: 20px;
@@ -564,6 +577,12 @@ section.form-secs-sec {
 		font-family: "Poppins-Medium";
 		font-size: 18px;
 		color: #146dfa;
+	}
+	footer .footer-content {
+		padding-bottom: 20px;
+	}
+	.content-discover {
+		margin-bottom: 10px;
 	}
 }
 @media (max-width: 576px) {
@@ -674,7 +693,7 @@ section.form-secs-sec {
 		left: -7px;
 	}
 	footer {
-		padding: 50px 0;
+		padding: 85px 0 50px;
 	}
 	.footer-content h3 {
 		color: #fff;

@@ -18,12 +18,14 @@ import slider4 from "../assets/img/slider4.png";
 import slider5 from "../assets/img/slider5.png";
 import slider6 from "../assets/img/slider6.png";
 import logo from "../assets/img/logo.png";
+import WebLogo from "../assets/img/web-logo.png";
 import appstore from "../assets/img/appstore.png";
 import googleplay from "../assets/img/googleplay.png";
 import play from "../assets/img/play.png";
 import imgd from "../assets/img/imgd.png";
 import arrowfaqs from "../assets/img/arrowfaqs.png";
 import testemonial from "../assets/img/testemonial.png";
+import shadowBg from "../assets/img/bg-shadow.png";
 
 export {
 	homeimg,
@@ -52,4 +54,6 @@ export {
 	imgd,
 	arrowfaqs,
 	testemonial,
+	WebLogo,
+	shadowBg,
 };

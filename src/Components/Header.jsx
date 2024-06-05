@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { logo } from "../images/index";
+import { WebLogo } from "../images/index";
 import "bootstrap/dist/css/bootstrap.css";
 import "../assets/css/commonStyle.css";
 import Hamburger from "hamburger-react";
@@ -20,7 +20,7 @@ const Header = () => {
 					<Row className="align-items-center">
 						<Col lg={3} xs={6}>
 							<div className="logo-wrapper">
-								<img src={logo} className="img-fluid" alt="Company Logo" />
+								<img src={WebLogo} className="img-fluid" alt="Company Logo" />
 							</div>
 						</Col>
 						<Col lg={6} xs={6} className="hidden-wrapper">

@@ -15,6 +15,7 @@ import {
 	iconimg3,
 	imgd,
 	play,
+	shadowBg,
 	slider,
 	slider1,
 	slider2,
@@ -41,7 +42,7 @@ const Home = ({ data }) => {
 	];
 	const settings = {
 		infinite: true,
-		slidesToShow: 4,
+		slidesToShow: 6,
 		slidesToScroll: 1,
 		speed: 2000,
 		cssEase: "linear",
@@ -196,7 +197,7 @@ const Home = ({ data }) => {
 					<Row className="align-items-center">
 						<Col lg={6}>
 							<div className="heading-banner">
-								<h5>Welcome to Marina Eye</h5>
+								<h5 className="text-uppercase">Welcome to Marina Eye</h5>
 								<h1 className="mt-3 mb-3">
 									Best platform for Enhancing Boater Marina Experience{" "}
 								</h1>
@@ -235,12 +236,12 @@ const Home = ({ data }) => {
 					</Row>
 				</Container>
 			</section>
-			{/* <section className="slider-sec pt-lg-5 pb-lg-5">
+			<section className="slider-sec pt-lg-5 pb-lg-5">
 				<Container>
 					<Row>
 						<Col lg={7} className="mx-auto">
 							<div className="marina-slider-content mt-5 text-center">
-								<h5>Welcome to Marina Eye</h5>
+								<h5 className="text-uppercase">Welcome to Marina Eye</h5>
 								<h2 className="mb-3 mt-3">Trusted By Well Known Brands</h2>
 								<p>
 									Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
@@ -255,7 +256,7 @@ const Home = ({ data }) => {
 							<div className="slider-wrapper mt-4">
 								<Slider {...settings}>
 									{imagesslider.map((image, index) => (
-										<div key={index}>
+										<div key={index} className="px-2">
 											<img
 												src={image}
 												className="img-fluid"
@@ -268,7 +269,7 @@ const Home = ({ data }) => {
 						</Col>
 					</Row>
 				</Container>
-			</section> */}
+			</section>
 			<section className="form-secs-sec">
 				<Container>
 					<Row>
@@ -283,7 +284,7 @@ const Home = ({ data }) => {
 						<Col lg={1}></Col>
 						<Col lg={6}>
 							<div className="marina-slider-content mt-5 text-start">
-								<h5>Welcome to Marina Eye</h5>
+								<h5 className="text-uppercase">Welcome to Marina Eye</h5>
 								<h2 className="mb-3 mt-3">
 									From Seas to Your Screen Marina Eye Enhances Your Boating
 									Journey
@@ -309,7 +310,7 @@ const Home = ({ data }) => {
 					<Row>
 						<Col lg={6}>
 							<div className="marina-slider-content  text-start">
-								<h5>Welcome to Marina Eye</h5>
+								<h5 className="text-uppercase">Welcome to Marina Eye</h5>
 								<h2 className="mb-3 mt-3">
 									Download Our Application & Get The Most Out of It
 								</h2>
@@ -392,12 +393,12 @@ const Home = ({ data }) => {
 					</Row>
 				</Container>
 			</section>
-			<section className="discover-sec">
+			<section className="discover-sec bg-yellow">
 				<Container>
 					<Row>
 						<Col lg={7} className="mx-auto">
 							<div className="marina-slider-content mt-5 text-center">
-								<h5>Why use our application</h5>
+								<h5 className="text-uppercase">Why use our application</h5>
 								<h2 className="mb-3 mt-3">
 									Discover the Benefits of Marina Eye for Seamless Docking
 								</h2>
@@ -410,7 +411,11 @@ const Home = ({ data }) => {
 								<Col lg={3}>
 									<div className="content-discover">
 										<img src={iconimg3} className="img-fluid" alt="" />
-										<h5>Community and Support</h5>
+										<h5>
+											Community and
+											<br />
+											Support
+										</h5>
 										<p>
 											Lorem ipsum dolor sit amet, consecte adipiscing elit, sed
 											do eiusmod
@@ -430,7 +435,10 @@ const Home = ({ data }) => {
 								<Col lg={3}>
 									<div className="content-discover">
 										<img src={iconimg1} className="img-fluid" alt="" />
-										<h5>User-Friendly Interface</h5>
+										<h5>
+											User-Friendly
+											<br /> Interface
+										</h5>
 										<p>
 											Lorem ipsum dolor sit amet, consecte adipiscing elit, sed
 											do eiusmod
@@ -457,7 +465,7 @@ const Home = ({ data }) => {
 					<Row>
 						<Col lg={7} className="mx-auto">
 							<div className="marina-slider-content mt-5 text-center">
-								<h5>Frequently asked questionS</h5>
+								<h5 className="text-uppercase">Frequently asked questionS</h5>
 								<h2 className="mb-3 mt-3">Let us answer your Questions</h2>
 								<p>
 									Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
@@ -562,7 +570,7 @@ const Home = ({ data }) => {
 						</Col>
 						<Col lg={6}>
 							<div className="marina-slider-content  text-start">
-								<h5>Welcome to Marina Eye</h5>
+								<h5 className="text-uppercase">Welcome to Marina Eye</h5>
 								<h2 className="mb-3 mt-3">
 									Have a look at what our client say about Us
 								</h2>
