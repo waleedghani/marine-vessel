@@ -25,6 +25,7 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	scroll-behavior: smooth;
 }
 html {
 	overflow-x: hidden;
@@ -241,6 +242,92 @@ a.anchor-read-me {
 .bg-yellow {
 	background-color: var(--yellow-bg);
 }
+/* Contact Css Start Here */
+.contact_sec .contact_details {
+	background: #e9e9e9;
+	padding: 5rem 5rem;
+	height: 100%;
+}
+.contact_details .title_wrapper .title {
+	line-height: 75px;
+	color: #1c244b;
+	font-size: 65px;
+	font-family: var(--font-poppins-semibold);
+}
+.contact_details p {
+	font-family: var(--font-poppins-regular);
+	color: #324a6d;
+}
+.contact_details .details .sub_title {
+	font-family: var(--font-poppins-medium);
+	font-size: 22px;
+}
+.contact_details .list_details li a {
+	color: #324a6d;
+	font-family: var(--font-poppins-light);
+	text-decoration: none;
+	font-size: 15px;
+}
+.contact_details .social_icons li a {
+	text-decoration: none;
+}
+.contact_details .social_icons li a i {
+	background: #000;
+	width: 30px;
+	height: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	text-decoration: none;
+	color: #fff;
+}
+.contact_details .social_icons li a .fa-facebook {
+	background: #3b5998;
+}
+.contact_details .social_icons li a .fa-twitter {
+	background: #1da1f2;
+}
+.contact_details .social_icons li a .fa-pinterest-p {
+	background: #bd081c;
+}
+.contact_details .social_icons li a .fa-instagram {
+	background: #262626;
+}
+.contact_sec .contact_form {
+	padding: 5rem 5rem;
+}
+.contact_sec .contact_form .btn {
+	font-family: var(--font-poppins-regular);
+	background: #467ff7;
+	color: #fff;
+	padding: 12px 50px;
+}
+.contact_sec .contact_form .magic_input {
+	border: 1px solid #c8d5dc;
+	border-radius: 0;
+	height: 50px;
+	color: #c8d5dc;
+	font-family: var(--font-poppins-light);
+}
+.contact_sec .contact_form .magic_input::placeholder {
+	color: #727e85;
+}
+.contact_sec .contact_form textarea {
+	height: 120px !important;
+	resize: none;
+}
+.contact_sec .contact_form .marineBtn {
+	border: 0;
+	font-family: "Poppins-Regular";
+	width: 100%;
+	padding: 10px 0px;
+	color: #fff;
+	background: #ffbb0e;
+	border-radius: 50px;
+}
+/* Contact Css End Here */
+
 /* styles.css */
 section.discover-sec {
 	/* background: #d9d9d9; */
@@ -462,8 +549,7 @@ section.have-a-look-sec {
 	background-color: white; /* Change background color on scroll */
 }
 footer {
-	/* background: #212121; */
-	padding: 120px 0;
+	padding: 60px 0 70px;
 	background-image: url(../img/footer-bg.png);
 	background-size: cover;
 	background-repeat: no-repeat;

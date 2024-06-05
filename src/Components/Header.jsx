@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "../assets/css/commonStyle.css";
 import Hamburger from "hamburger-react";
 
-const Header = () => {
+const Header = ({ bg }) => {
 	const [isOpen, setOpen] = useState(false);
 
 	const toggleMenu = () => {
@@ -15,12 +15,17 @@ const Header = () => {
 
 	return (
 		<>
-			<section className="header">
+			<section
+				className="header"
+				style={{ background: bg, position: bg ? "unset" : "absolute" }}
+			>
 				<Container>
 					<Row className="align-items-center">
 						<Col lg={3} xs={6}>
 							<div className="logo-wrapper">
-								<img src={WebLogo} className="img-fluid" alt="Company Logo" />
+								<Link to="/">
+									<img src={WebLogo} className="img-fluid" alt="Company Logo" />
+								</Link>
 							</div>
 						</Col>
 						<Col lg={6} xs={6} className="hidden-wrapper">
@@ -30,13 +35,13 @@ const Header = () => {
 										<Link to="/">Home</Link>
 									</li>
 									<li>
-										<Link to="/about">About</Link>
+										<a href={bg ? "/" : "#aboutSec"}>About</a>
 									</li>
 									<li>
-										<Link to="/faqs">FAQs</Link>
+										<a href={bg ? "/" : "#faqs"}>FAQs</a>
 									</li>
 									<li>
-										<Link to="/contact">Contact</Link>
+										<Link to="/contact-us">Contact</Link>
 									</li>
 								</ul>
 							</div>

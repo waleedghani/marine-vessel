@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import "../assets/css/commonStyle.css";
 import { WebLogo, appstore, googleplay } from "../images";
-const Footer = () => {
+const Footer = ({ diffPage }) => {
 	return (
 		<>
 			<footer>
@@ -45,10 +45,10 @@ const Footer = () => {
 										<h5>Menu</h5>
 										<ul>
 											<li>
-												<Link To="/">Home</Link>
-												<Link To="/">About</Link>
-												<Link To="/">FAQs</Link>
-												<Link To="/">Contact</Link>
+												<Link to="/">Home</Link>
+												<a href={diffPage ? "/" : "#aboutSec"}>About</a>
+												<a href={diffPage ? "/" : "#faqs"}>FAQs</a>
+												<Link to="/contact-us">Contact</Link>
 											</li>
 										</ul>
 									</div>

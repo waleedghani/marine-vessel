@@ -270,7 +270,7 @@ const Home = ({ data }) => {
 					</Row>
 				</Container>
 			</section>
-			<section className="form-secs-sec">
+			<section className="form-secs-sec" id="aboutSec">
 				<Container>
 					<Row>
 						<Col lg={5}>
@@ -460,7 +460,7 @@ const Home = ({ data }) => {
 					</Row>
 				</Container>
 			</section>
-			<section className="faqs">
+			<section className="faqs" id="faqs">
 				<Container>
 					<Row>
 						<Col lg={7} className="mx-auto">

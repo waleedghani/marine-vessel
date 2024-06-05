@@ -2,6 +2,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "../pages/Home"; // Import your Home component
+import Contact from "../pages/Contact";
 
 // Define the PublicRoutes component
 const PublicRoutes = () => {
@@ -12,10 +13,11 @@ const PublicRoutes = () => {
 			<Routes>
 				{/* Define a route for the home page */}
 				<Route path="/" element={<Home />} />
+				<Route path="/contact-us" element={<Contact />} />
 			</Routes>
 		</BrowserRouter>
 	);
 };
 
 // Export the PublicRoutes component
-export default PublicRoutes; 
+export default PublicRoutes;
