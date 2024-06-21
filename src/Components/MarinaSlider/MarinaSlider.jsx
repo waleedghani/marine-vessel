@@ -41,14 +41,12 @@ const videos = [
 ];
 
 const MarinaSlider = () => {
-
     const { data, error, isLoading } = useGetMarinaApplicationQuery();
     const { data: site, error: siteError, isLoading: siteLoading } = useGetSiteSettingQuery();
 
     const videoData = site?.response?.data?.[0];
     const [currentIndex, setCurrentIndex] = useState(0);
 
-    console.log(currentIndex, "pasdoiis")
     const [playing, setPlaying] = useState(Array(videos.length).fill(false));
     const videoRefs = useRef([]);
     const [loading, setLoading] = useState(false)

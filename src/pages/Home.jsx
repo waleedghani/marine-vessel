@@ -348,8 +348,8 @@ const Home = () => {
 									<Skeleton />
 								) : (
 									benefitData?.response?.data.map((item, index) => (
-										<Col lg={3}>
-											<div className="content-discover" key={index}>
+										<Col lg={3} key={index}>
+											<div className="content-discover"  >
 												<img src={item?.image_url} className="img-fluid" alt="" />
 												<h5>{item?.title}</h5>
 												<p>{item?.description}</p>
