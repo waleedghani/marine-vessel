@@ -5,6 +5,7 @@ import { WebLogo } from "../images/index";
 import "bootstrap/dist/css/bootstrap.css";
 import "../assets/css/commonStyle.css";
 import Hamburger from "hamburger-react";
+import { useGetSiteSettingQuery } from "../RTK/service";
 
 const Header = ({ bg }) => {
 	const [isOpen, setOpen] = useState(false);
@@ -12,6 +13,10 @@ const Header = ({ bg }) => {
 	const toggleMenu = () => {
 		setOpen(!isOpen);
 	};
+
+	const { data, error, isLoading } = useGetSiteSettingQuery();
+
+	const logo = data?.response?.data?.[0];
 
 	return (
 		<>
@@ -24,7 +29,7 @@ const Header = ({ bg }) => {
 						<Col lg={3} xs={6}>
 							<div className="logo-wrapper">
 								<Link to="/">
-									<img src={WebLogo} className="img-fluid" alt="Company Logo" />
+									<img src={logo?.logo_path} className="img-fluid" alt="Company Logo" />
 								</Link>
 							</div>
 						</Col>

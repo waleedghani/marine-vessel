@@ -29,8 +29,21 @@ import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import MarinaSlider from "../Components/MarinaSlider/MarinaSlider";
+import { useGetFaqQuery, useGetMarinaBenefitQuery, useGetPartnerQuery, useGetTestimonialQuery, useGetSiteSettingQuery } from "../RTK/service";
+import { Skeleton } from "antd";
 
-const Home = ({ data }) => {
+const Home = () => {
+
+	const { data: faqData, error: faqError, isLoading: faqIsLoading } = useGetFaqQuery();
+	const { data: testimonialData, error: testimonialError, isLoading: testimonialIsLoading } = useGetTestimonialQuery();
+	const { data: benefitData, error: benefitError, isLoading: benefitIsLoading } = useGetMarinaBenefitQuery();
+	const { data: partnerData, error: partnerError, isLoading: partnerIsLoading } = useGetPartnerQuery();
+	const { data, error, isLoading } = useGetSiteSettingQuery();
+
+
+	const homeData = data?.response?.data?.[0];
+
 	const imagesslider = [
 		slider,
 		slider1,
@@ -159,29 +172,29 @@ const Home = ({ data }) => {
 			},
 		],
 	};
-	const faqData = [
-		{
-			question: "Is Marina Eye suitable for all types of boaters?",
-			answer:
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation",
-		},
-		{
-			question: "ow do I connect with other boaters on Marina Eye?",
-			answer:
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation",
-		},
-		{
-			question: "Can I find local attractions near marinas using Marina Eye?",
-			answer:
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation",
-		},
-		{
-			question: "Is the information on Marina Eye up-to-date?",
-			answer:
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation",
-		},
-		// Add more FAQ items as needed
-	];
+	// const faqData = [
+	// 	{
+	// 		question: "Is Marina Eye suitable for all types of boaters?",
+	// 		answer:
+	// 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation",
+	// 	},
+	// 	{
+	// 		question: "ow do I connect with other boaters on Marina Eye?",
+	// 		answer:
+	// 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation",
+	// 	},
+	// 	{
+	// 		question: "Can I find local attractions near marinas using Marina Eye?",
+	// 		answer:
+	// 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation",
+	// 	},
+	// 	{
+	// 		question: "Is the information on Marina Eye up-to-date?",
+	// 		answer:
+	// 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation",
+	// 	},
+	// 	// Add more FAQ items as needed
+	// ];
 
 	const [expandedIndex, setExpandedIndex] = useState(null);
 
@@ -199,21 +212,20 @@ const Home = ({ data }) => {
 							<div className="heading-banner">
 								<h5 className="text-uppercase">Welcome to Marina Eye</h5>
 								<h1 className="mt-3 mb-3">
-									Best platform for Enhancing Boater Marina Experience{" "}
+									{homeData?.section_one_title}
 								</h1>
 								<p>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-									do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+									{homeData?.section_one_sub_title}
 								</p>
 								<div className="pay-btn d-flex align-items-center gap-2">
-									<Link To="/">
+									<Link to={homeData?.google_link}>
 										<img
 											src={googleplay}
 											className="img-fluid"
 											alt="Google Play"
 										/>
 									</Link>
-									<Link To="/">
+									<Link to={homeData?.app_link}>
 										<img src={appstore} className="img-fluid" alt="App Store" />
 									</Link>
 								</div>
@@ -242,11 +254,9 @@ const Home = ({ data }) => {
 						<Col lg={7} className="mx-auto">
 							<div className="marina-slider-content mt-5 text-center">
 								<h5 className="text-uppercase">Welcome to Marina Eye</h5>
-								<h2 className="mb-3 mt-3">Trusted By Well Known Brands</h2>
+								<h2 className="mb-3 mt-3">{homeData?.section_two_title}</h2>
 								<p>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-									do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-									Ut enim ad minim veniam, quis nostrud exercitation
+									{homeData?.section_two_description}
 								</p>
 							</div>
 						</Col>
@@ -255,16 +265,33 @@ const Home = ({ data }) => {
 						<Col lg={10} className="mx-auto">
 							<div className="slider-wrapper mt-4">
 								<Slider {...settings}>
-									{imagesslider.map((image, index) => (
-										<div key={index} className="px-2">
-											<img
-												src={image}
-												className="img-fluid"
-												alt={`Slider Image ${index}`}
-											/>
-										</div>
-									))}
+									{partnerIsLoading ? (
+										Array.from({ length: 5 }).map((_, index) => (
+											<div key={index} className="px-2">
+												<Skeleton className="img-fluid" avatar />
+											</div>
+										))
+
+									) : (
+										partnerData?.response?.data?.length > 0 ? (
+											partnerData?.response?.data?.map((partner, index) => (
+												<div key={index} className="px-2">
+													<img
+														src={partner?.image_url}
+														className="img-fluid"
+														alt={`Slider Image ${index}`}
+													/>
+												</div>
+											))
+										) : (
+											<div className="px-2">
+												<p>No partners available</p>
+											</div>
+										)
+									)}
 								</Slider>
+
+
 							</div>
 						</Col>
 					</Row>
@@ -286,18 +313,12 @@ const Home = ({ data }) => {
 							<div className="marina-slider-content mt-5 text-start">
 								<h5 className="text-uppercase">Welcome to Marina Eye</h5>
 								<h2 className="mb-3 mt-3">
-									From Seas to Your Screen Marina Eye Enhances Your Boating
-									Journey
+									{homeData?.section_three_title}
 								</h2>
 								<p>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-									do eiusmod tempor incididunt ut labore et dolore magna
-									aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-									duis aute irure dolor in reprehenderit in voluptate velit esse
-									cillum dolore eu fugiat nulla pariatur. Excepteur sint
-									occaecat cupidatat non proident, sunt in culpa qui officia.
+									{homeData?.section_three_description}
 								</p>
-								<Link To="" className="anchor-read-me">
+								<Link to="" className="anchor-read-me">
 									Read More
 								</Link>
 							</div>
@@ -305,94 +326,9 @@ const Home = ({ data }) => {
 					</Row>
 				</Container>
 			</section>
-			<section className="application-download-sec">
-				<Container>
-					<Row>
-						<Col lg={6}>
-							<div className="marina-slider-content  text-start">
-								<h5 className="text-uppercase">Welcome to Marina Eye</h5>
-								<h2 className="mb-3 mt-3">
-									Download Our Application & Get The Most Out of It
-								</h2>
-							</div>
-							<div className="slider-vertical-play sliderverticalplay">
-								<Slider {...sliderverticalplay}>
-									<div>
-										<div className="play-content">
-											<div className="play-wrapper">
-												<img src={play} className="img-fluid" alt="" />
-											</div>
-											<div className="now-playing">
-												<h5>Now Playing</h5>
-												<h4>
-													Videos for a Better Understanding of Each Marina
-												</h4>
-											</div>
-										</div>
-									</div>
-									<div>
-										<div className="play-content">
-											<div className="play-wrapper">
-												<img src={play} className="img-fluid" alt="" />
-											</div>
-											<div className="now-playing">
-												<h5>Now Playing</h5>
-												<h4>
-													Videos for a Better Understanding of Each Marina
-												</h4>
-											</div>
-										</div>
-									</div>
-									<div>
-										<div className="play-content">
-											<div className="play-wrapper">
-												<img src={play} className="img-fluid" alt="" />
-											</div>
-											<div className="now-playing">
-												<h5>Now Playing</h5>
-												<h4>
-													Videos for a Better Understanding of Each Marina
-												</h4>
-											</div>
-										</div>
-									</div>
-									<div>
-										<div className="play-content">
-											<div className="play-wrapper">
-												<img src={play} className="img-fluid" alt="" />
-											</div>
-											<div className="now-playing">
-												<h5>Now Playing</h5>
-												<h4>
-													Videos for a Better Understanding of Each Marina
-												</h4>
-											</div>
-										</div>
-									</div>
-									<div>
-										<div className="play-content">
-											<div className="play-wrapper">
-												<img src={play} className="img-fluid" alt="" />
-											</div>
-											<div className="now-playing">
-												<h5>Now Playing</h5>
-												<h4>
-													Videos for a Better Understanding of Each Marina
-												</h4>
-											</div>
-										</div>
-									</div>
 
-									{/* Add more play-content divs as needed */}
-								</Slider>
-							</div>
-						</Col>
-						<Col lg={6}>
-							<img src={imgd} className="img-fluid" alt="" />
-						</Col>
-					</Row>
-				</Container>
-			</section>
+			<MarinaSlider />
+
 			<section className="discover-sec bg-yellow">
 				<Container>
 					<Row>
@@ -400,64 +336,31 @@ const Home = ({ data }) => {
 							<div className="marina-slider-content mt-5 text-center">
 								<h5 className="text-uppercase">Why use our application</h5>
 								<h2 className="mb-3 mt-3">
-									Discover the Benefits of Marina Eye for Seamless Docking
+									{homeData?.section_five_title}
 								</h2>
 							</div>
 						</Col>
 					</Row>
-					<Row className="mt-5">
-						<Col lg={12} className="mx-auto">
+					<div className="mt-5">
+						<div className="mx-auto">
 							<Row>
-								<Col lg={3}>
-									<div className="content-discover">
-										<img src={iconimg3} className="img-fluid" alt="" />
-										<h5>
-											Community and
-											<br />
-											Support
-										</h5>
-										<p>
-											Lorem ipsum dolor sit amet, consecte adipiscing elit, sed
-											do eiusmod
-										</p>
-									</div>
-								</Col>
-								<Col lg={3}>
-									<div className="content-discover">
-										<img src={iconimg2} className="img-fluid" alt="" />
-										<h5>Local Attractions and Amenities</h5>
-										<p>
-											Lorem ipsum dolor sit amet, consecte adipiscing elit, sed
-											do eiusmod
-										</p>
-									</div>
-								</Col>
-								<Col lg={3}>
-									<div className="content-discover">
-										<img src={iconimg1} className="img-fluid" alt="" />
-										<h5>
-											User-Friendly
-											<br /> Interface
-										</h5>
-										<p>
-											Lorem ipsum dolor sit amet, consecte adipiscing elit, sed
-											do eiusmod
-										</p>
-									</div>
-								</Col>
-								<Col lg={3}>
-									<div className="content-discover">
-										<img src={iconimg} className="img-fluid" alt="" />
-										<h5>Comprehensive Marina Information</h5>
-										<p>
-											Lorem ipsum dolor sit amet, consecte adipiscing elit, sed
-											do eiusmod
-										</p>
-									</div>
-								</Col>
+								{benefitIsLoading ? (
+									<Skeleton />
+								) : (
+									benefitData?.response?.data.map((item, index) => (
+										<Col lg={3}>
+											<div className="content-discover" key={index}>
+												<img src={item?.image_url} className="img-fluid" alt="" />
+												<h5>{item?.title}</h5>
+												<p>{item?.description}</p>
+											</div>
+										</Col>
+									))
+								)}
 							</Row>
-						</Col>
-					</Row>
+						</div>
+
+					</div>
 				</Container>
 			</section>
 			<section className="faqs" id="faqs">
@@ -466,39 +369,42 @@ const Home = ({ data }) => {
 						<Col lg={7} className="mx-auto">
 							<div className="marina-slider-content mt-5 text-center">
 								<h5 className="text-uppercase">Frequently asked questionS</h5>
-								<h2 className="mb-3 mt-3">Let us answer your Questions</h2>
+								<h2 className="mb-3 mt-3">	{homeData?.section_six_title}
+								</h2>
 								<p>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-									do eiusmod tempor incididunt ut labore et dolore magna
-									aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+									{homeData?.section_six_description}
 								</p>
 							</div>
 						</Col>
 					</Row>
 					<Row>
 						<Col lg={8} className="mx-auto">
+
 							<div className="faq-container">
-								{faqData.map((item, index) => (
-									<div key={index} className="faq-item">
-										<div
-											className={`question ${
-												expandedIndex === index ? "expanded" : ""
-											}`}
-											onClick={() => toggleAnswer(index)}
-											aria-expanded={expandedIndex === index ? "true" : "false"}
-											aria-controls={`answer-${index}`}
-											role="button"
-											tabIndex={0}
-										>
-											<span>{item.question}</span>
+								{faqIsLoading ? (
+									<Skeleton />
+
+								) : (
+									faqData?.response?.data.map((item, index) => (
+										<div key={index} className="faq-item">
+											<div
+												className={`question ${expandedIndex === index ? "expanded" : ""}`}
+												onClick={() => toggleAnswer(index)}
+												aria-expanded={expandedIndex === index ? "true" : "false"}
+												aria-controls={`answer-${index}`}
+												role="button"
+												tabIndex={0}
+											>
+												<span>{item.question}</span>
+											</div>
+											{expandedIndex === index && (  // Show answer if expandedIndex matches current index
+												<p className="answer" id={`answer-${index}`}>
+													{item.answer}
+												</p>
+											)}
 										</div>
-										{expandedIndex === index && (
-											<p className="answer" id={`answer-${index}`}>
-												{item.answer}
-											</p>
-										)}
-									</div>
-								))}
+									))
+								)}
 							</div>
 						</Col>
 					</Row>
@@ -509,7 +415,31 @@ const Home = ({ data }) => {
 					<Row className="align-items-center">
 						<Col lg={6}>
 							<Slider {...sliderverticaltestemonial}>
-								<div className="testemonial-content ">
+								{testimonialIsLoading ? (
+									<Skeleton />
+
+								) : (
+									testimonialData?.response?.data.map((item, index) => (
+										<div className="testemonial-content " key={index}>
+											<div className="tes-main d-flex justify-content-between align-items-start">
+												<div className="testeminial-img d-flex gap-3 align-items-center">
+													<img src={item?.image_url} className="img-fluid" alt="" />
+													<div>
+														<h5>{item?.name}</h5>
+														<h6>{item?.designation}</h6>
+
+													</div>
+												</div>
+												<h4>A month Ago</h4>
+											</div>
+											<p>
+												{item?.description}
+											</p>
+										</div>
+									))
+								)}
+
+								{/* <div className="testemonial-content ">
 									<div className="tes-main d-flex justify-content-between align-items-start">
 										<div className="testeminial-img d-flex gap-3 align-items-center">
 											<img src={testemonial} className="img-fluid" alt="" />
@@ -546,39 +476,18 @@ const Home = ({ data }) => {
 										deserunt mollit anim id est laborum.Lorem ipsum dolor sit
 										amet, consectetur adipiscing elit, sed do eiusmod tempor
 									</p>
-								</div>
-								<div className="testemonial-content ">
-									<div className="tes-main d-flex justify-content-between align-items-start">
-										<div className="testeminial-img d-flex gap-3 align-items-center">
-											<img src={testemonial} className="img-fluid" alt="" />
-											<div>
-												<h5>Salvatore Warner</h5>
-												<h6>Yacht Captain</h6>
-											</div>
-										</div>
-										<h4>A month Ago</h4>
-									</div>
-									<p>
-										Duis aute irure dolor in reprehenderit in voluptate velit
-										esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-										occaecat cupidatat non proident, sunt in culpa qui officia
-										deserunt mollit anim id est laborum.Lorem ipsum dolor sit
-										amet, consectetur adipiscing elit, sed do eiusmod tempor
-									</p>
-								</div>
+								</div> */}
 							</Slider>
 						</Col>
 						<Col lg={6}>
 							<div className="marina-slider-content  text-start">
 								<h5 className="text-uppercase">Welcome to Marina Eye</h5>
 								<h2 className="mb-3 mt-3">
-									Have a look at what our client say about Us
+									{homeData?.section_seven_title}
 								</h2>
 								<p>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-									do eiusmod tempor incididunt ut labore et dolore magna
-									aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-									reprehenderit.
+									{homeData?.section_seven_description}
+
 								</p>
 							</div>
 						</Col>

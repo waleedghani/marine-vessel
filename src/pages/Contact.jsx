@@ -1,17 +1,47 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useGetContactUsMutation } from "../RTK/service";
+import toast, { Toaster } from 'react-hot-toast';
+
 
 const Contact = () => {
+	const [fields, setFields] = useState({ first_name: "", phone: "", message: "", email: "" });
+
+	const [getContactUs, { isLoading, isSuccess, isError, data, error }] = useGetContactUsMutation();
+	const handlePostContactInfo = async (e) => {
+		e.preventDefault();
+		let formData = new FormData();
+		formData.append("first_name", fields?.first_name);
+		formData.append("phone", fields?.phone);
+		formData.append("message", fields?.message);
+		formData.append("email", fields?.email);
+
+		try {
+			const response = await getContactUs(formData).unwrap();
+			toast.success('Thank you');
+			console.log('getContactUs:', response);
+		} catch (err) {
+			console.error('Failed:', err);
+		}
+	};
+
+	const handleChange = (e) => {
+		setFields((prev) => ({
+			...prev,
+			[e.target.name]: e.target.value,
+		}));
+	};
+
 	useEffect(() => {
 		window.scrollTo(0, 0);
 	}, []);
+
 	return (
 		<>
 			<Header bg={"#146dfa"} />
-
 			{/* Contact Sec Start Here */}
 			<section className="contact_sec">
 				<Row>
@@ -38,22 +68,22 @@ const Contact = () => {
 							</div>
 							<ul className="social_icons d-flex flex-wrap pt-4 px-0 mb-0 list-unstyled">
 								<li className="mx-1">
-									<Link>
+									<Link to="#">
 										<i className="fa fa-facebook" aria-hidden="true"></i>
 									</Link>
 								</li>
 								<li className="mx-1">
-									<Link>
+									<Link to="#">
 										<i className="fa fa-twitter" aria-hidden="true"></i>
 									</Link>
 								</li>
 								<li className="mx-1">
-									<Link>
+									<Link to="#">
 										<i className="fa fa-pinterest-p" aria-hidden="true"></i>
 									</Link>
 								</li>
 								<li className="mx-1">
-									<Link>
+									<Link to="#">
 										<i className="fa fa-instagram" aria-hidden="true"></i>
 									</Link>
 								</li>
@@ -62,7 +92,8 @@ const Contact = () => {
 					</Col>
 					<Col lg={6}>
 						<div className="contact_form">
-							<form action="">
+							<form onSubmit={handlePostContactInfo}>
+							<Toaster />
 								<div className="row">
 									<div className="col-md-12">
 										<div className="form-group mb-3">
@@ -71,6 +102,9 @@ const Contact = () => {
 												required
 												placeholder="Full Name*"
 												className="form-control magic_input"
+												value={fields?.first_name}
+												name="first_name"
+												onChange={handleChange}
 											/>
 										</div>
 									</div>
@@ -78,6 +112,9 @@ const Contact = () => {
 										<div className="form-group mb-3">
 											<input
 												type="email"
+												value={fields?.email}
+												name="email"
+												onChange={handleChange}
 												required
 												placeholder="Email*"
 												className="form-control magic_input"
@@ -87,7 +124,10 @@ const Contact = () => {
 									<div className="col-md-6">
 										<div className="form-group mb-3">
 											<input
-												type="phone"
+												type="tel"
+												value={fields?.phone}
+												name="phone"
+												onChange={handleChange}
 												required
 												placeholder="Phone Number*"
 												className="form-control magic_input"
@@ -98,6 +138,9 @@ const Contact = () => {
 										<div className="form-group">
 											<textarea
 												required
+												value={fields?.message}
+												name="message"
+												onChange={handleChange}
 												placeholder="Message"
 												className="form-control magic_input"
 											></textarea>
@@ -105,7 +148,9 @@ const Contact = () => {
 									</div>
 									<div className="col-md-12">
 										<div className="button-group text-center">
-											<button className="marineBtn">Send</button>
+											<button type="submit" className="marineBtn">
+											{isLoading ? 'Loading...' : 'Submit'}
+											</button>
 										</div>
 									</div>
 								</div>
@@ -115,7 +160,6 @@ const Contact = () => {
 				</Row>
 			</section>
 			{/* Contact Sec End Here */}
-
 			<Footer diffPage={true} />
 		</>
 	);

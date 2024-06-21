@@ -1,10 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Row, Col, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import "../assets/css/commonStyle.css";
 import { WebLogo, appstore, googleplay } from "../images";
+import { useGetNewsLetterMutation, useGetSiteSettingQuery } from "../RTK/service";
+import toast, { Toaster } from 'react-hot-toast';
+
 const Footer = ({ diffPage }) => {
+	const [newsLetter, setNewsLetter] = useState('');
+	const [getNewsLetter, { isLoading, isSuccess, isError, data, error }] = useGetNewsLetterMutation();
+	const { data: site, error: siteError, isLoading: siteLoading } = useGetSiteSettingQuery();
+
+	const footerData = site?.response?.data?.[0];
+	const handleGetNewsletter = async () => {
+		const formData = new FormData();
+		formData.append('email', newsLetter);
+		try {
+			const response = await getNewsLetter(formData).unwrap();
+			toast.success('Thank you');
+		} catch (err) {
+			console.error('Failed:', err);
+		}
+	};
+
+	const handleChange = (e) => {
+		setNewsLetter(e.target.value);
+	};
+
 	return (
 		<>
 			<footer>
@@ -13,26 +36,26 @@ const Footer = ({ diffPage }) => {
 						<Col lg={5}>
 							<div className="footer-content">
 								<div className="footer_logo">
-									<a href="/">
+									<Link to="/">
 										<figure>
 											<img
-												src={WebLogo}
+												src={footerData?.logo_path}
 												alt="footer-logo"
 												className="img-fluid"
 											/>
 										</figure>
-									</a>
+									</Link>
 								</div>
 								<h3>Download Our Application & Get The Most Out of It</h3>
 								<div className="pay-btn d-flex align-items-center gap-2 mt-3">
-									<Link To="/">
+									<Link to={footerData?.google_link}>
 										<img
 											src={googleplay}
 											className="img-fluid"
 											alt="Google Play"
 										/>
 									</Link>
-									<Link To="/">
+									<Link to={footerData?.app_link}>
 										<img src={appstore} className="img-fluid" alt="App Store" />
 									</Link>
 								</div>
@@ -58,9 +81,10 @@ const Footer = ({ diffPage }) => {
 										<h5>Company</h5>
 										<ul>
 											<li>
-												<Link To="/">Terms & Condition </Link>
-												<Link To="/">Privacy Policy</Link>
-												<Link To="/">Cookie Policy</Link>
+												<Link to="/term-condition">Terms & Condition</Link>
+												<Link to="/privacy-policy">Privacy Policy</Link>
+												<Link to="/">Delete Account Page</Link>
+												<Link to="/">Cookie Policy</Link>
 											</li>
 										</ul>
 									</div>
@@ -69,12 +93,23 @@ const Footer = ({ diffPage }) => {
 									<div className="list-url-footer">
 										<h5>Subscribe To Our Newsletter</h5>
 										<Form>
+
+
+
 											<Form.Group className="mb-3" controlId="formBasicEmail">
-												<Form.Control type="email" placeholder="Enter email" />
+
+												<Form.Control type="email" placeholder="Enter email" value={newsLetter}
+													onChange={handleChange} />
 											</Form.Group>
-											<Link To="" className="btn gold">
-												Submit
+
+											<Link to="" className="btn gold"
+												onClick={handleGetNewsletter}>
+												{isLoading ? 'Loading...' : 'Submit'}
 											</Link>
+											<Toaster
+												position="top-center"
+												reverseOrder={true}
+											/>
 										</Form>
 									</div>
 								</Col>
