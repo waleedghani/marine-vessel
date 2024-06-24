@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../../Components/Header';
 import Footer from '../../Components/Footer';
-import "../../assets/css/commonStyle.css";
+import "../../assets/css/pagesCss.css";
 import { useGetPagesQuery } from '../../RTK/service';
 import { Skeleton } from "antd";
 
@@ -15,24 +15,22 @@ const PrivacyPolicy = () => {
             <Header bg={"#146dfa"} />
             <section>
                 <div className="container pt-5">
-                    <h2 className='text-dark text-center'>
+                    <h1 className=' pages_heading text-center'>
                         {
                             isLoading ? (
                                 <Skeleton />
                             ) : (
                                 termData?.[0]?.title
+
+
                             )
                         }
-                    </h2>
-                    <p className='text-dark'>
-                        {
-                            isLoading ? (
-                                <Skeleton />
-                            ) : (
-                                termData?.[0]?.content
-                            )
-                        }
-                    </p>
+
+
+                    </h1>
+                    {termData && termData[0] &&
+                        <p className='text-dark' dangerouslySetInnerHTML={{ __html: termData[0].content }} />
+                    }
                 </div>
             </section>
             <Footer />

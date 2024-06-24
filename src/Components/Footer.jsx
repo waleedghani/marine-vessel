@@ -83,7 +83,7 @@ const Footer = ({ diffPage }) => {
 											<li>
 												<Link to="/term-condition">Terms & Condition</Link>
 												<Link to="/privacy-policy">Privacy Policy</Link>
-												<Link to="/">Delete Account Page</Link>
+												<Link to="/delete-account-page">Delete Account Page</Link>
 												<Link to="/">Cookie Policy</Link>
 											</li>
 										</ul>

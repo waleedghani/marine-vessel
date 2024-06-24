@@ -4,15 +4,11 @@ import Footer from '../../Components/Footer';
 import "../../assets/css/pagesCss.css";
 import { useGetPagesQuery } from '../../RTK/service';
 import { Skeleton } from "antd";
-import { TbHours12 } from 'react-icons/tb';
 
-const TermConditions = () => {
+const PrivacyPolicy = () => {
     const { data, error, isLoading } = useGetPagesQuery();
 
-    const termData = data?.response?.data?.filter((a) => a.slug === "term-and-condition");
-
-    console.log(termData, "termData");
-
+    const termData = data?.response?.data?.filter((a) => a.slug === "delete-account-page");
 
     return (
         <>
@@ -25,10 +21,13 @@ const TermConditions = () => {
                                 <Skeleton />
                             ) : (
                                 termData?.[0]?.title
+
+
                             )
                         }
-                    </h1>
 
+
+                    </h1>
                     {termData && termData[0] &&
                         <p className='text-dark' dangerouslySetInnerHTML={{ __html: termData[0].content }} />
                     }
@@ -39,4 +38,4 @@ const TermConditions = () => {
     );
 }
 
-export default TermConditions;
+export default PrivacyPolicy;

@@ -1,0 +1,16 @@
+.MsoNormal{
+	color: #000000;
+	font-family: "Poppins-Regular";
+}
+.text-dark{
+	color: #000000;
+	font-family: "Poppins-Regular";
+}
+p{
+	color: #000000;
+    font-family: "Poppins-Regular";
+}
+.pages_heading{
+    font-family: var(--bold-font-family);
+    color: #000000;
+}

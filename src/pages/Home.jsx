@@ -216,7 +216,7 @@ const Home = () => {
 								<h1 className="mt-3 mb-3">
 									{homeData?.section_one_title}
 								</h1>
-								<p>
+								<p className="text-light">
 									{homeData?.section_one_sub_title}
 								</p>
 								<div className="pay-btn d-flex align-items-center gap-2">

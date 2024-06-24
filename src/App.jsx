@@ -12,8 +12,8 @@ function App() {
 	const meta = data?.response?.data[4];
 
 	console.log(meta?.[0], "keyyy");
-	const metaTitle = meta?.meta_title ? meta?.meta_title : "Home";
-	const metaDescription = meta?.meta_description ? meta?.meta_description : "Home Description";
+	const metaTitle = meta?.meta_title ? meta?.meta_title : "Marina Eye";
+	const metaDescription = meta?.meta_description ? meta?.meta_description : "Marina Eye";
 	return (
 		<>
 			<DynamicPage
