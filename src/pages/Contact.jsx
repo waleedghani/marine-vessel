@@ -3,14 +3,25 @@ import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import { Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { useGetContactUsMutation } from "../RTK/service";
-import toast, { Toaster } from 'react-hot-toast';
-
+import {
+	useGetContactUsMutation,
+	useGetSiteSettingQuery,
+} from "../RTK/service";
+import toast, { Toaster } from "react-hot-toast";
 
 const Contact = () => {
-	const [fields, setFields] = useState({ first_name: "", phone: "", message: "", email: "" });
+	// Site Setting
+	const { data: siteData } = useGetSiteSettingQuery();
+	let contactInfo = siteData?.response?.data[0];
+	const [fields, setFields] = useState({
+		first_name: "",
+		phone: "",
+		message: "",
+		email: "",
+	});
 
-	const [getContactUs, { isLoading, isSuccess, isError, data, error }] = useGetContactUsMutation();
+	const [getContactUs, { isLoading, isSuccess, isError, data, error }] =
+		useGetContactUsMutation();
 	const handlePostContactInfo = async (e) => {
 		e.preventDefault();
 		let formData = new FormData();
@@ -21,10 +32,10 @@ const Contact = () => {
 
 		try {
 			const response = await getContactUs(formData).unwrap();
-			toast.success('Thank you');
-			console.log('getContactUs:', response);
+			toast.success("Thank you");
+			console.log("getContactUs:", response);
 		} catch (err) {
-			console.error('Failed:', err);
+			console.error("Failed:", err);
 		}
 	};
 
@@ -59,31 +70,35 @@ const Contact = () => {
 								<h3 className="sub_title">Get In Touch</h3>
 								<ul className="list_details px-0 mb-0 list-unstyled">
 									<li className="mb-2">
-										<a href="tel:123-456789">123-456789</a>
+										<a href={`tel:${contactInfo?.contact_phone}`}>
+											{contactInfo?.contact_phone}
+										</a>
 									</li>
 									<li className="mb-2">
-										<a href="mailto:example@admin.com">example@admin.com</a>
+										<a href={`mailto:${contactInfo?.contact_email}`}>
+											{contactInfo?.contact_email}
+										</a>
 									</li>
 								</ul>
 							</div>
 							<ul className="social_icons d-flex flex-wrap pt-4 px-0 mb-0 list-unstyled">
 								<li className="mx-1">
-									<Link to="#">
+									<Link to={contactInfo?.facebook}>
 										<i className="fa fa-facebook" aria-hidden="true"></i>
 									</Link>
 								</li>
 								<li className="mx-1">
-									<Link to="#">
+									<Link to={contactInfo?.twitter}>
 										<i className="fa fa-twitter" aria-hidden="true"></i>
 									</Link>
 								</li>
 								<li className="mx-1">
-									<Link to="#">
+									<Link to={contactInfo?.pinterest}>
 										<i className="fa fa-pinterest-p" aria-hidden="true"></i>
 									</Link>
 								</li>
 								<li className="mx-1">
-									<Link to="#">
+									<Link to={contactInfo?.instagram}>
 										<i className="fa fa-instagram" aria-hidden="true"></i>
 									</Link>
 								</li>
@@ -93,7 +108,7 @@ const Contact = () => {
 					<Col lg={6}>
 						<div className="contact_form">
 							<form onSubmit={handlePostContactInfo}>
-							<Toaster />
+								<Toaster />
 								<div className="row">
 									<div className="col-md-12">
 										<div className="form-group mb-3">
@@ -149,7 +164,7 @@ const Contact = () => {
 									<div className="col-md-12">
 										<div className="button-group text-center">
 											<button type="submit" className="marineBtn">
-											{isLoading ? 'Loading...' : 'Submit'}
+												{isLoading ? "Loading..." : "Submit"}
 											</button>
 										</div>
 									</div>
