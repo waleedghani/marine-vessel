@@ -5,6 +5,7 @@ import Home from "../pages/Home"; // Import your Home component
 import Contact from "../pages/Contact";
 import PrivacyPolicy from "../pages/PrivacyPolicy/PrivacyPolicy"
 import TermConditions from "../pages/TermConditions/TermConditions"
+import DeleteAccountPage from "../pages/DeleteAccountPage/DeleteAccountPage";
 
 // Define the PublicRoutes component
 const PublicRoutes = () => {
@@ -16,6 +17,7 @@ const PublicRoutes = () => {
 				<Route path="/contact-us" element={<Contact />} />
 				<Route path="/term-condition" element={<TermConditions />} />
 				<Route path="/privacy-policy" element={<PrivacyPolicy />} />
+				<Route path="/delete-account-page" element={<DeleteAccountPage />} />
 			</Routes>
 		</BrowserRouter>
 	);
