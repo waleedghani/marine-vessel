@@ -8,7 +8,7 @@ import { Skeleton } from "antd";
 const PrivacyPolicy = () => {
     const { data, error, isLoading } = useGetPagesQuery();
 
-    const termData = data?.response?.data?.filter((a) => a.slug === "privacy-policy");
+    const termData = data?.response?.data?.filter((a) => a.slug === "privacy-policy-2");
 
     return (
         <>
@@ -20,7 +20,7 @@ const PrivacyPolicy = () => {
                             isLoading ? (
                                 <Skeleton />
                             ) : (
-                                termData?.[0]?.page_title
+                                termData?.[0]?.title
                             )
                         }
                     </h2>

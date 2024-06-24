@@ -44,6 +44,8 @@ const Home = () => {
 
 	const homeData = data?.response?.data?.[0];
 
+	console.log(testimonialData ,"testimonialData");
+
 	const imagesslider = [
 		slider,
 		slider1,

@@ -2,7 +2,8 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const getApi = createApi({
   reducerPath: 'getApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'https://api-marine-cms.developer-ourbase-camp.com/api/' }),
+  // baseQuery: fetchBaseQuery({ baseUrl: 'https://api-marine-cms.developer-ourbase-camp.com/api/' }),
+  baseQuery: fetchBaseQuery({ baseUrl: 'https://app.marinaeye.com/api/' }),
   endpoints: (builder) => ({
     getFaq: builder.query({
       query: () => 'faq',
@@ -17,7 +18,7 @@ export const getApi = createApi({
       query: () => `marina-application`,
     }),
     getPages: builder.query({
-      query: () => `page`,
+      query: () => `web-pages`,
     }),
     getPartner: builder.query({
         query: () => `partner`,

@@ -23,7 +23,7 @@ const TermConditions = () => {
                             isLoading ? (
                                 <Skeleton />
                             ) : (
-                                termData?.[0]?.page_title
+                                termData?.[0]?.title
                             )
                         }
                     </h2>
