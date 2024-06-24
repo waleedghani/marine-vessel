@@ -5,7 +5,7 @@ import "../../assets/css/pagesCss.css";
 import { useGetPagesQuery } from '../../RTK/service';
 import { Skeleton } from "antd";
 
-const DeleteAccountPage = () => {
+const PrivacyPolicy = () => {
     const { data, error, isLoading } = useGetPagesQuery();
 
     const termData = data?.response?.data?.filter((a) => a.slug === "delete-account-page");
@@ -38,4 +38,4 @@ const DeleteAccountPage = () => {
     );
 }
 
-export default DeleteAccountPage;
+export default PrivacyPolicy;
