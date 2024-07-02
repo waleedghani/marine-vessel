@@ -145,7 +145,7 @@ const MarinaSlider = () => {
                             </Slider>
                         </div>
                     </Col>
-                    <Col lg={6}>
+                    <Col lg={6} className='m-lg-0 my-4'>
 
                         {data?.response?.data?.map((video, index) => (
                             <video

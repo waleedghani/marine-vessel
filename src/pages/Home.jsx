@@ -140,16 +140,16 @@ const Home = () => {
 
 	const sliderverticaltestemonial = {
 		dots: true,
-		arrows: false,
-		infinite: true,
-		speed: 500,
-		slidesToShow: 2,
-		slidesToScroll: 1,
-		vertical: true,
-		verticalSwiping: true,
-		autoplay: true,
-		autoplaySpeed: 2000,
-		cssEase: "ease-in-out",
+        arrows: false,
+        infinite: true,
+        speed: 7000,
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        vertical: true,
+        verticalSwiping: true,
+        autoplay: true,
+        autoplaySpeed: 7000,
+        cssEase: "ease-in-out",
 		responsive: [
 			{
 				breakpoint: 992,
@@ -320,9 +320,9 @@ const Home = () => {
 								<p>
 									{homeData?.section_three_description}
 								</p>
-								<Link to="" className="anchor-read-me">
+								{/* <Link to="" className="anchor-read-me">
 									Read More
-								</Link>
+								</Link> */}
 							</div>
 						</Col>
 					</Row>
